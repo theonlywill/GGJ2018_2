@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GravityField : MonoBehaviour
+public class GravityField : Item
 {
     public float power = 9.85f;
 

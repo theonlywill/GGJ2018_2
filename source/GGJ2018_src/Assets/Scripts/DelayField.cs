@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DelayField : MonoBehaviour {
+public class DelayField : Item
+{
 
-    public float maxSpeed = 5f;
+	public float maxSpeed = 5f;
 
-    public static float BRAKE_POWER = 5f;
+	public static float BRAKE_POWER = 5f;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start()
+	{
+
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
-		
+	void Update()
+	{
+
 	}
 }
