@@ -37,13 +37,17 @@ public class LevelSystem
 
         // is there a next level?
         int newLevelNum = 2;
+        int currentLevelNum = 0;
 
         if (currentLevel)
         {
+            currentLevelNum = currentLevel.levelNumber;
             newLevelNum = currentLevel.levelNumber + 1;
 
             // TODO: How many stars did I really get
+            SaveSystem.Load();
             SaveSystem.SetNumStars(currentLevel.levelNumber, 3);
+            SaveSystem.Save();
         }
         else
         {
@@ -52,9 +56,13 @@ public class LevelSystem
             Scene activeScene = SceneManager.GetActiveScene();
             if(activeScene != null)
             {
-                if(int.TryParse( activeScene.name, out newLevelNum))
+                if(int.TryParse( activeScene.name, out currentLevelNum))
                 {
-                    newLevelNum++;
+                    newLevelNum = currentLevelNum + 1;
+
+                    SaveSystem.Load();
+                    SaveSystem.SetNumStars(currentLevelNum, 3);
+                    SaveSystem.Save();
                 }
             }
 #endif
