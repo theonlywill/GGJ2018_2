@@ -38,10 +38,10 @@ public class GameCamera : MonoBehaviour
         bool shouldFollow = false;
         if (GameManager.playerShip)
         {
-            isFlying = GameManager.playerShip.canGo;
+            isFlying = GameManager.playerShip.isFlying;
 
-            shouldFollow = GameManager.playerShip && GameManager.playerShip.canGo;
-            if(resettingCam && GameManager.playerShip.canGo)
+            shouldFollow = GameManager.playerShip && GameManager.playerShip.isFlying;
+            if(resettingCam && GameManager.playerShip.isFlying)
             {
                 resettingCam = false;
             }
@@ -130,7 +130,7 @@ public class GameCamera : MonoBehaviour
 
         if(resettingCam)
         {
-            if (GameManager.playerShip && !GameManager.playerShip.canGo)
+            if (GameManager.playerShip && !GameManager.playerShip.isFlying)
             {
                 Vector3 desiredPos = GameManager.playerShip.transform.position;
                 desiredPos += offsetFromPlayer;

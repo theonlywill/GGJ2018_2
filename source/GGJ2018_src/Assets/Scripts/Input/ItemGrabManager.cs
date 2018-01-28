@@ -25,7 +25,7 @@ public class ItemGrabManager : MonoBehaviour
 				ReleaseItem();
 			}
 		}
-		else if( Input.GetMouseButtonDown( 0 ) )
+		else if( !GameManager.playerShip.isFlying && Input.GetMouseButtonDown( 0 ) )
 		{
 			Vector3 origin = new Vector3( Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane );
 			Ray ray = Camera.main.ScreenPointToRay( origin );
