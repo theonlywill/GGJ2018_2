@@ -40,7 +40,7 @@ public class PlayerShip : MonoBehaviour
     public float launchShakePower = 0.005f;
     public float launchShakeDuration = 3f;
 
-
+	private Dictionary<ItemTypes, InventoryItem> inventory = new Dictionary<ItemTypes, InventoryItem>();
 
     // Use this for initialization
     void Start()
@@ -55,6 +55,8 @@ public class PlayerShip : MonoBehaviour
         }
 
         SetThrusters(false);
+
+		SetUpInventory();
     }
 
     // Update is called once per frame
@@ -67,6 +69,51 @@ public class PlayerShip : MonoBehaviour
             PointTowardsVelocity();
         }
     }
+
+	private void SetUpInventory()
+	{
+		LevelInfo currentLevelInfo = LevelSystem.currentLevel;
+		HUD hud = GameManager.Instance.HUD;
+
+		InventoryItem attractItem = new InventoryItem();
+		attractItem.count = currentLevelInfo.numAttract;
+		attractItem.itemPrefab = Resources.Load<GameObject>( "Prefabs/PR_GravityField" );
+		inventory.Add( ItemTypes.Attract, attractItem );
+		hud.AssignAttractItem( attractItem );
+		Debug.Log( "Gravity field count: " + attractItem.count );
+
+		InventoryItem delayItem =  new InventoryItem();
+		delayItem.count = currentLevelInfo.numDelay;
+		delayItem.itemPrefab = Resources.Load<GameObject>( "Prefabs/PR_DelayField" );
+		inventory.Add( ItemTypes.DelayField, delayItem );
+		hud.AssignDelayItem( delayItem );
+
+		InventoryItem fuelItem = new InventoryItem();
+		fuelItem.count = currentLevelInfo.numFuelPacks;
+		fuelItem.itemPrefab = Resources.Load<GameObject>( "Prefabs/pr_fuel" );
+		inventory.Add( ItemTypes.FuelPack, fuelItem );
+		hud.AssignFuelItem( fuelItem );
+
+		InventoryItem missileItem = new InventoryItem();
+		missileItem.count = currentLevelInfo.numMissile;
+		//missileItem.itemPrefab = "???";
+		inventory.Add( ItemTypes.Missile, missileItem );
+		hud.AssignMissileItem( missileItem );
+
+		InventoryItem repelItem = new InventoryItem();
+		repelItem.count = currentLevelInfo.numRepel;
+		repelItem.itemPrefab = Resources.Load<GameObject>( "Prefabs/PR_RepulseField" );
+		inventory.Add( ItemTypes.Repel, repelItem );
+		hud.AssignRepelItem( repelItem );
+
+		InventoryItem shieldItem = new InventoryItem();
+		shieldItem.count = currentLevelInfo.numShield;
+		//shieldItem.itemPrefab = "???";
+		inventory.Add( ItemTypes.Shield, shieldItem );
+		hud.AssignShieldItem( shieldItem );
+
+		hud.FinishAssigningButtons();
+	}
 
     [ContextMenu("Reset Ship")]
     public void ResetShip()
