@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: level9
   m_EditorClassIdentifier: 
   levelNumber: 9
-  numFuelPacks: 0
-  numAttract: 0
-  numRepel: 0
+  numFuelPacks: 1
+  numAttract: 1
+  numRepel: 2
   numDelay: 0
   numShield: 0
   numMissile: 0

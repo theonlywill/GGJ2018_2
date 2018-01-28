@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelNumber: 12
   numFuelPacks: 0
-  numAttract: 0
+  numAttract: 1
   numRepel: 0
-  numDelay: 0
+  numDelay: 1
   numShield: 0
   numMissile: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   levelNumber: 6
   numFuelPacks: 0
   numAttract: 0
-  numRepel: 0
+  numRepel: 4
   numDelay: 0
   numShield: 0
   numMissile: 0
