@@ -93,6 +93,9 @@ public class LevelSystem
         // no more levels??
         // You beat the game!!!!
         // todo: hook up ending sequence?
-        SceneManager.LoadScene("LevelSelect");
+        if (!foundlevel)
+        {
+            SceneManager.LoadScene("LevelSelect");
+        }
     }
 }
