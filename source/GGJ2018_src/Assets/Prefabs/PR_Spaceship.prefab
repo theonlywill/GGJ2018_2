@@ -561,7 +561,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  canGo: 0
+  isFlying: 0
   explosionPrefab: {fileID: 1646261946664406, guid: 4d3f91123596c724abb2abaff893dbb2,
     type: 2}
   deadSpacemanPrefab: {fileID: 1474907680430456, guid: ea9d208a6e35d3a47932b4c33a2def21,
@@ -579,6 +579,7 @@ MonoBehaviour:
     type: 2}
   breadcrumbCooldown: 0.25
   maxBreadcrumbs: 300
+  numTimesDied: 0
 --- !u!114 &114459719390671934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -779,7 +780,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 129549110
+  randomSeed: 859083151
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4002,7 +4003,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -125680922
+  randomSeed: 2039015717
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4068,7 +4069,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 2
       minColor: {r: 0.9044118, g: 0.8046146, b: 0, a: 1}
-      maxColor: {r: 1, g: 0, b: 0, a: 1}
+      maxColor: {r: 0.9338235, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.21176471, g: 0.50980395, b: 1, a: 1}
@@ -7267,7 +7268,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -301443523
+  randomSeed: -1069304911
   InitialModule:
     serializedVersion: 3
     enabled: 1
