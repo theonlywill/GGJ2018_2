@@ -48,6 +48,9 @@ public class DialogWindow : MonoBehaviour {
         if (!closedDialog)
         {
             // we closed our last dialog
+            AudioSource a = GetComponent<AudioSource>();
+            a.Stop();
+
             canvas.SetActive(false);
         }
     }
