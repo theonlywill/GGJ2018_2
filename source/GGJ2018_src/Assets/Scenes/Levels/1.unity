@@ -1157,6 +1157,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114189571573110428, guid: bf4949a3e047f8343a14b81b266855a3,
+        type: 2}
+      propertyPath: followLerpStrength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114189571573110428, guid: bf4949a3e047f8343a14b81b266855a3,
+        type: 2}
+      propertyPath: flyingOffsetFromPlayer.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114189571573110428, guid: bf4949a3e047f8343a14b81b266855a3,
+        type: 2}
+      propertyPath: maxVelocityOffset
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf4949a3e047f8343a14b81b266855a3, type: 2}
   m_IsPrefabParent: 0
