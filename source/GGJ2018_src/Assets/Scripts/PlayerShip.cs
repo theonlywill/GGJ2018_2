@@ -98,6 +98,9 @@ public class PlayerShip : MonoBehaviour
         transform.position = Vector3.zero;
         model.SetActive(true);
 		GameManager.Instance.ShipLauncher.ResetLauncher();
+
+        // refocus camera
+        //GameCamera.Current.
     }
 
     [ContextMenu("LAUNCH")]
