@@ -29,53 +29,32 @@ public class LevelSystem
         return 0;
     }
 
-    public static void FinishLevel()
+    public static int GetStarsForCurrentLevel()
     {
-        // TODO: do a cool looking sequence instead of just ending
+        int currentLevelNum = GetCurrentLevelNum();
 
-        
+
+
+        return GetNumStars(currentLevelNum);
+    }
+
+    public static void GoToNextLevel()
+    {
+
+        int currentLevelNum = GetCurrentLevelNum();
 
         // is there a next level?
-        int newLevelNum = 2;
-        int currentLevelNum = 0;
+        int newLevelNum = currentLevelNum + 1;
 
-        if (currentLevel)
-        {
-            currentLevelNum = currentLevel.levelNumber;
-            newLevelNum = currentLevel.levelNumber + 1;
-
-            // TODO: How many stars did I really get
-            SaveSystem.Load();
-            SaveSystem.SetNumStars(currentLevel.levelNumber, 3);
-            SaveSystem.Save();
-        }
-        else
-        {
-#if UNITY_EDITOR
-            // figure out our current level
-            Scene activeScene = SceneManager.GetActiveScene();
-            if(activeScene != null)
-            {
-                if(int.TryParse( activeScene.name, out currentLevelNum))
-                {
-                    newLevelNum = currentLevelNum + 1;
-
-                    SaveSystem.Load();
-                    SaveSystem.SetNumStars(currentLevelNum, 3);
-                    SaveSystem.Save();
-                }
-            }
-#endif
-        }
         List<LevelInfo> levels = new List<LevelInfo>(Resources.LoadAll<LevelInfo>("Levels"));
         bool foundlevel = false;
-        for(int i = 0; i < levels.Count; i++)
+        for (int i = 0; i < levels.Count; i++)
         {
-            if(levels[i].levelNumber == newLevelNum)
+            if (levels[i].levelNumber == newLevelNum)
             {
                 string sceneNameToLoad = levels[i].levelNumber.ToString();
                 Scene newScene = SceneManager.GetSceneByName(sceneNameToLoad);
-                if(newScene != null)
+                if (newScene != null)
                 {
                     SceneManager.LoadScene(sceneNameToLoad);
                 }
@@ -84,7 +63,7 @@ public class LevelSystem
                     Debug.LogError("Scene with name " + sceneNameToLoad + " is not in build settings!!!");
                     SceneManager.LoadScene("LevelSelect");
                 }
-                
+
                 foundlevel = true;
                 break;
             }
@@ -97,5 +76,73 @@ public class LevelSystem
         {
             SceneManager.LoadScene("LevelSelect");
         }
+    }
+
+    public static int GetCurrentLevelNum()
+    {
+        int currentLevelNum = 0;
+
+        if (currentLevel)
+        {
+            return currentLevel.levelNumber;
+        }
+        else
+        {
+#if UNITY_EDITOR
+            // figure out our current level
+            Scene activeScene = SceneManager.GetActiveScene();
+            if (activeScene != null)
+            {
+                if (int.TryParse(activeScene.name, out currentLevelNum))
+                {
+                    return currentLevelNum;
+                }
+            }
+#endif
+        }
+
+        return currentLevelNum;
+    }
+
+    public static int CalculateStars()
+    {
+        // 
+        // beating it gets you atleast 1
+        // more than 3 deaths = 1
+        // 3 or less deaths = 2
+        // first try is 3 stars = 3
+        if (GameManager.playerShip)
+        {
+            if(GameManager.playerShip.numTimesDied > 3)
+            {
+                return 1;
+            }
+            if(GameManager.playerShip.numTimesDied > 0)
+            {
+                return 2;
+            }
+            if(GameManager.playerShip.numTimesDied < 1)
+            {
+                return 3;
+            }
+        }
+        return 3;
+    }
+
+    public static void FinishLevel()
+    {
+        
+        int currentLevelNum = GetCurrentLevelNum();
+
+        SaveSystem.Load();
+
+        SaveSystem.SetNumStars(currentLevelNum, CalculateStars());
+
+        SaveSystem.Save();
+
+        // open up our cool "you win the level" sequence
+        GameObject winPrefab = Resources.Load<GameObject>("PR_WinPopup");
+        GameObject goInstance = GameObject.Instantiate<GameObject>(winPrefab, Vector3.zero, Quaternion.identity);
+
     }
 }

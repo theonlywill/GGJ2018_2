@@ -50,6 +50,8 @@ public class PlayerShip : MonoBehaviour
     public int maxBreadcrumbs = 5;
     private List<GameObject> breadCrumbs = new List<GameObject>();
 
+    public int numTimesDied = 0;
+
     // Use this for initialization
     void Start()
     {
@@ -402,6 +404,8 @@ public class PlayerShip : MonoBehaviour
             GameCamera.Current.Shake(deathShakePower,deathShakeDuration);
 
             SetThrusters(false);
+
+            numTimesDied++;
 
             // hide our model
             model.SetActive(false);
