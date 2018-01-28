@@ -13,6 +13,13 @@ public class SaveSystem
 
     public static void SetNumStars(int levelNum, int stars)
     {
+        if(currentData == null)
+        {
+            //currentData
+
+            //todo stuff
+            return;
+        }
         for(int i = 0; i < currentData.levelSaveData.Count; i++)
         {
             if(currentData.levelSaveData[i].level == levelNum)
