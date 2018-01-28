@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 198288430796445178}
   - component: {fileID: 199602393019793386}
   m_Layer: 0
-  m_Name: CFXM4_Space Thruster C (Blue-Purple, CFX Blend)
+  m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,8 +284,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1765349456086918}
   m_LocalRotation: {x: 0.70710576, y: -0, z: -0, w: 0.7071079}
-  m_LocalPosition: {x: 0, y: -0.093, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
+  m_LocalScale: {x: -0.09, y: 0.2, z: 0.1}
   m_Children: []
   m_Father: {fileID: 4507023019977660}
   m_RootOrder: 0
@@ -779,7 +779,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 1120311447
+  randomSeed: 129549110
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4002,7 +4002,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -1203661217
+  randomSeed: -125680922
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4067,8 +4067,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.7019608, g: 0.22745098, b: 1, a: 1}
-      maxColor: {r: 0.14901961, g: 0.5058824, b: 1, a: 1}
+      minColor: {r: 0.9044118, g: 0.8046146, b: 0, a: 1}
+      maxColor: {r: 1, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.21176471, g: 0.50980395, b: 1, a: 1}
@@ -7267,7 +7267,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 1785912496
+  randomSeed: -301443523
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10499,7 +10499,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: a3ac0035284846d43849a0dd23a5be2b, type: 2}
+  - {fileID: 2100000, guid: fb4f9c7d63cee324f8b21e4be653786e, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
