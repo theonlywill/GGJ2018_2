@@ -26,6 +26,7 @@ public class PlayerShip : MonoBehaviour
     public float deathShakeDuration = 2f;
 
     public GameObject model;
+    public GameObject fuelgauge;
 
     List<DelayField> delayFieldsImIn = new List<DelayField>();
     List<GravityField> gravityFieldsImIn = new List<GravityField>();
@@ -40,11 +41,17 @@ public class PlayerShip : MonoBehaviour
     public float launchShakePower = 0.005f;
     public float launchShakeDuration = 3f;
 
-
+    [Header("Bread crumbs")]
+    public GameObject breadcrumbsPrefab;
+    public float breadcrumbCooldown = 0.5f;
+    float lastBreadcrumbDrop = 0f;
+    public int maxBreadcrumbs = 5;
+    private List<GameObject> breadCrumbs = new List<GameObject>();
 
     // Use this for initialization
     void Start()
     {
+
         body = GetComponent<Rigidbody2D>();
         body.simulated = false;
 
@@ -65,6 +72,28 @@ public class PlayerShip : MonoBehaviour
             UpdateFuel();
 
             PointTowardsVelocity();
+
+            UpdateBreadcrumbsInFlight();
+        }
+
+
+    }
+
+    void UpdateBreadcrumbsInFlight()
+    {
+        if(Time.time - lastBreadcrumbDrop > breadcrumbCooldown)
+        {
+            lastBreadcrumbDrop = Time.time;
+            // drop a breadcrumb
+            GameObject newBreadcrumb = GameObject.Instantiate<GameObject>(breadcrumbsPrefab, transform.position, Quaternion.identity);
+
+            breadCrumbs.Add(newBreadcrumb);
+
+            // wipe out old breadcrumbs
+            if(breadCrumbs.Count > maxBreadcrumbs)
+            {
+                breadCrumbs.RemoveAt(0);
+            }
         }
     }
 
@@ -101,6 +130,7 @@ public class PlayerShip : MonoBehaviour
         // Place me on the launchpad
         transform.position = Vector3.zero;
         model.SetActive(true);
+        fuelgauge.SetActive(true);
 		GameManager.Instance.ShipLauncher.ResetLauncher();
 
         // refocus camera
@@ -360,6 +390,7 @@ public class PlayerShip : MonoBehaviour
 
             // hide our model
             model.SetActive(false);
+            fuelgauge.SetActive(false);
             canGo = false;
             body.simulated = false;
 

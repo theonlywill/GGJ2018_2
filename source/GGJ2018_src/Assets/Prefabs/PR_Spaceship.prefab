@@ -445,7 +445,7 @@ MonoBehaviour:
   maxFuel: 100
   forwardSpeed: 30
   fuelConsumptionRate: 15
-  body: {fileID: 0}
+  body: {fileID: 50162941877004602}
   onFuelEmpty:
     m_PersistentCalls:
       m_Calls: []
@@ -459,10 +459,15 @@ MonoBehaviour:
   deathShakePower: 0.05
   deathShakeDuration: 2
   model: {fileID: 1353780819983774}
+  fuelgauge: {fileID: 1696090379413166}
   thrusterFX: {fileID: 1267313926860194}
   rotationSpeedDegreesPerSec: 60
   launchShakePower: 0.005
   launchShakeDuration: 3
+  breadcrumbsPrefab: {fileID: 1606573093835058, guid: 452bf7846e366634d82843c9206b1715,
+    type: 2}
+  breadcrumbCooldown: 0.25
+  maxBreadcrumbs: 300
 --- !u!114 &114459719390671934
 MonoBehaviour:
   m_ObjectHideFlags: 1
