@@ -131,9 +131,9 @@ MonoBehaviour:
   upperLimitPos: 100
   offsetFromPlayer: {x: 0, y: 1.35, z: -3}
   flyingOffsetFromPlayer: {x: 0, y: 0, z: -1}
-  maxVelocityOffset: 0.25
+  maxVelocityOffset: 0.5
   velocityOffsetMultiplier: 10
-  followLerpStrength: 0.75
+  followLerpStrength: 1
   touchMoveSpeed: 3
   lastResetShipTime: 0
   resettingCam: 1
