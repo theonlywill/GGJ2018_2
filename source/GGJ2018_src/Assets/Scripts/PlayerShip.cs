@@ -17,7 +17,7 @@ public class PlayerShip : MonoBehaviour
 
     public UnityEvent onFuelEmpty;
 
-    public bool canGo = false;
+    public bool isFlying = false;
 
     [Header("Death")]
     public GameObject explosionPrefab;
@@ -77,7 +77,7 @@ public class PlayerShip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canGo)
+        if (isFlying)
         {
             UpdateFuel();
 
@@ -117,7 +117,7 @@ public class PlayerShip : MonoBehaviour
 		attractItem.itemPrefab = Resources.Load<GameObject>( "Prefabs/PR_GravityField" );
 		inventory.Add( ItemTypes.Attract, attractItem );
 		hud.AssignAttractItem( attractItem );
-		Debug.Log( "Gravity field count: " + attractItem.count );
+		//Debug.Log( "Gravity field count: " + attractItem.count );
 
 		InventoryItem delayItem =  new InventoryItem();
 		delayItem.count = currentLevelInfo.numDelay;
@@ -195,7 +195,7 @@ public class PlayerShip : MonoBehaviour
     [ContextMenu("LAUNCH")]
     public void LaunchShip()
     {
-        canGo = true;
+        isFlying = true;
         body.simulated = true;
         // todo: play some launch sfx
         SetThrusters(true);
@@ -270,7 +270,7 @@ public class PlayerShip : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (!canGo)
+        if (!isFlying)
         {
             // make sure our gravity doesn't move us
             //body.AddForce(Physics.gravity * -1f * body.gravityScale);
@@ -420,7 +420,7 @@ public class PlayerShip : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (canGo)
+        if (isFlying)
         {
             WinPortal winPortal = collision.collider.GetComponent<WinPortal>();
             if (winPortal)
@@ -428,7 +428,7 @@ public class PlayerShip : MonoBehaviour
                 // YOU WIN!!!!
                 Debug.Log("You win!!!!");
 
-                canGo = false;
+                isFlying = false;
 
                 gameObject.SetActive(false);
 
@@ -461,7 +461,7 @@ public class PlayerShip : MonoBehaviour
             // hide our model
             model.SetActive(false);
             fuelgauge.SetActive(false);
-            canGo = false;
+            isFlying = false;
             body.simulated = false;
 
             ResetShip();
