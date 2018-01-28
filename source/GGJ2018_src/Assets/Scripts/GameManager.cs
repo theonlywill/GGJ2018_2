@@ -36,6 +36,13 @@ public class GameManager
 
     public static PlayerShip playerShip;
 
+	private PlayerShipLauncher shipLauncher = null;
+	public PlayerShipLauncher ShipLauncher
+	{
+		get { return shipLauncher; }
+		set { shipLauncher = value; }
+	}
+
 	public HUD HUD
 	{
 		get { return guiRoot.GetComponent<HUD>(); }

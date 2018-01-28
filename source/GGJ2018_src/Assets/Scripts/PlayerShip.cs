@@ -97,6 +97,7 @@ public class PlayerShip : MonoBehaviour
         // Place me on the launchpad
         transform.position = Vector3.zero;
         model.SetActive(true);
+		GameManager.Instance.ShipLauncher.ResetLauncher();
     }
 
     [ContextMenu("LAUNCH")]
