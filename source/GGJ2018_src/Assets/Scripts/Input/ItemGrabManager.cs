@@ -34,7 +34,7 @@ public class ItemGrabManager : MonoBehaviour
 			if( hitInfo )
 			{
 				Item item = hitInfo.transform.gameObject.GetComponent<Item>();
-				if( item != null )
+				if( item != null && item.WasPlacedByPlayer )
 				{
 					GrabItem( item.gameObject );
 				}
