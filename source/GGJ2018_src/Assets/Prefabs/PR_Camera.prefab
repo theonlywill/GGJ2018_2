@@ -128,15 +128,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bottomMostPos: 0.8
-  upperLimitPos: 100
   offsetFromPlayer: {x: 0, y: 1.35, z: -3}
-  flyingOffsetFromPlayer: {x: 0, y: 0, z: -1}
-  maxVelocityOffset: 0.5
+  maxVelocityOffset: 0.25
   velocityOffsetMultiplier: 10
-  followLerpStrength: 1
+  followLerpStrength: 0.25
   touchMoveSpeed: 3
-  lastResetShipTime: 0
-  resettingCam: 1
 --- !u!114 &114931899096596144
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -77,11 +77,7 @@ public class PlayerShip : MonoBehaviour
 
     IEnumerator ResetShipRoutine()
     {
-        if(GameCamera.Current)
-        {
-            GameCamera.Current.lastResetShipTime = Time.time;
-            GameCamera.Current.resettingCam = true;
-        }
+        
         //model.SetActive(true);
         ResetFuel();
         body.simulated = false;
