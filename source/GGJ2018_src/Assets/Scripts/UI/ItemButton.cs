@@ -27,6 +27,7 @@ public class ItemButton : MonoBehaviour
 		}
 
 		GameObject itemObject = Instantiate<GameObject>(item.itemPrefab);
+		itemObject.GetComponent<Item>().WasPlacedByPlayer = true;
 		GameManager.Instance.ItemGrabManager.GrabItem( itemObject );
 
 		item.count--;

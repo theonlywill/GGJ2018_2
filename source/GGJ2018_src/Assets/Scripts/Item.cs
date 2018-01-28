@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+	public bool WasPlacedByPlayer = false;
+
 	public void SetCollidersEnabled(bool shouldBeEnabled)
 	{
 		Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
