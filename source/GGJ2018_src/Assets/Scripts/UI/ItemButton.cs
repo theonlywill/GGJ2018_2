@@ -7,29 +7,32 @@ using UnityEngine.UI;
 public class ItemButton : MonoBehaviour
 {
 	public InventoryItem item = null;
-
 	private Button button = null;
 
 	private void Awake()
 	{
 		button = GetComponent<Button>();
-		button.onClick.AddListener( TakeItem );
 	}
 
-	private void OnDestroy()
+	public void AddItem()
 	{
-		button.onClick.RemoveListener( TakeItem );
+		button.interactable = true;
 	}
 
 	public void TakeItem()
 	{
+		if( !button.interactable )
+		{
+			return;
+		}
+
 		GameObject itemObject = Instantiate<GameObject>(item.itemPrefab);
 		GameManager.Instance.ItemGrabManager.GrabItem( itemObject );
 
 		item.count--;
 		if( item.count == 0 )
 		{
-			gameObject.SetActive( false );
+			button.interactable = false;
 		}
 	}
 }

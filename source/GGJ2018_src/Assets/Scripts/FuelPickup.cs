@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FuelPickup : MonoBehaviour
+public class FuelPickup : Item
 {
-
     public float amount = 25f;
     bool pickedUp = false;
 
