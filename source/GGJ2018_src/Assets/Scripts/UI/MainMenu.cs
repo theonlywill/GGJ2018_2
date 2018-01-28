@@ -5,9 +5,16 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         SaveSystem.Load();
-	}
+
+        if(Application.platform == RuntimePlatform.WindowsPlayer)
+        {
+            Debug.LogWarning("Forcing to portrait resolution on pc");
+            Screen.SetResolution(432, 768, false);
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {

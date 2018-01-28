@@ -78,6 +78,27 @@ public class LevelSystem
         }
     }
 
+    public static LevelInfo GetCurrentLevelInfo()
+    {
+        if (currentLevel)
+        {
+            return currentLevel;
+        }
+
+        int currentLevelNum = GetCurrentLevelNum();
+
+
+        List<LevelInfo> levels = new List<LevelInfo>(Resources.LoadAll<LevelInfo>("Levels"));
+        for (int i = 0; i < levels.Count; i++)
+        {
+            if (levels[i].levelNumber == currentLevelNum)
+            {
+                return levels[i];
+            }
+        }
+
+        return null;
+    }
     public static int GetCurrentLevelNum()
     {
         int currentLevelNum = 0;

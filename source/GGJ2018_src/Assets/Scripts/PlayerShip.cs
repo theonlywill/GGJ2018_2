@@ -109,7 +109,7 @@ public class PlayerShip : MonoBehaviour
 
 	private void SetUpInventory()
 	{
-		LevelInfo currentLevelInfo = LevelSystem.currentLevel;
+		LevelInfo currentLevelInfo = LevelSystem.GetCurrentLevelInfo();
 		HUD hud = GameManager.Instance.HUD;
 
 		InventoryItem attractItem = new InventoryItem();
