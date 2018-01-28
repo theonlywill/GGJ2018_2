@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerSaveData
 {
+    [System.Serializable]
     public class LevelSaveData
     {
         public int level = 0;

@@ -11,6 +11,8 @@ public class LevelSelect : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        SaveSystem.Load();
+
         BuildLevelList();
 	}
 
