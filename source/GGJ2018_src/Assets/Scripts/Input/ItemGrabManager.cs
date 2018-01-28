@@ -92,6 +92,11 @@ public class ItemGrabManager : MonoBehaviour
 	{
 		Vector3 mouse = Input.mousePosition;
 		mouse.z = heldItem.transform.position.z;
+		//Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(mouse), )
+		Plane gameplane = new Plane(Vector3.forward,0f);
+		float dist = 0f;
+		gameplane.Raycast( Camera.main.ScreenPointToRay( mouse ), out dist );
+		mouse.z = dist;
 		Vector3 newPos = Camera.main.ScreenToWorldPoint( mouse );
 
 		return newPos;
