@@ -29,6 +29,7 @@ public class DialogWindow : MonoBehaviour {
     public void OnClicked()
     {
         bool closedDialog = false;
+        int closedDialogNum = -1;
         for(int i = 0; i < dialogs.Count; i++)
         {
             if(dialogs[i].window.activeSelf)
@@ -40,18 +41,21 @@ public class DialogWindow : MonoBehaviour {
                 {
                     audioSource.PlayOneShot(dialogs[i].audioClip);
                 }
-
+                closedDialogNum = i;
                 break;
             }
         }
 
-        if (!closedDialog)
+        
+        if (closedDialogNum == dialogs.Count - 1)
         {
             // we closed our last dialog
             AudioSource a = GetComponent<AudioSource>();
             a.Stop();
 
             canvas.SetActive(false);
+            
+
         }
     }
 }

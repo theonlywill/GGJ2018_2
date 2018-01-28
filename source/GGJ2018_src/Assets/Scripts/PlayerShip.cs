@@ -26,11 +26,14 @@ public class PlayerShip : MonoBehaviour
     public float deathShakeDuration = 2f;
 
     public GameObject model;
+    public GameObject fuelgauge;
 
     List<DelayField> delayFieldsImIn = new List<DelayField>();
     List<GravityField> gravityFieldsImIn = new List<GravityField>();
     List<RepulseField> repulseFieldsImIn = new List<RepulseField>();
 
+    [Header("Thrusters")]
+    public AudioSource thrusterSounds;
     List<ParticleSystem> thrusterParticles = new List<ParticleSystem>();
     public GameObject thrusterFX;
 
@@ -40,11 +43,21 @@ public class PlayerShip : MonoBehaviour
     public float launchShakePower = 0.005f;
     public float launchShakeDuration = 3f;
 
+
+
 	private Dictionary<ItemTypes, InventoryItem> inventory = new Dictionary<ItemTypes, InventoryItem>();
+
+    [Header("Bread crumbs")]
+    public GameObject breadcrumbsPrefab;
+    public float breadcrumbCooldown = 0.5f;
+    float lastBreadcrumbDrop = 0f;
+    public int maxBreadcrumbs = 5;
+    private List<GameObject> breadCrumbs = new List<GameObject>();
 
     // Use this for initialization
     void Start()
     {
+
         body = GetComponent<Rigidbody2D>();
         body.simulated = false;
 
@@ -67,6 +80,28 @@ public class PlayerShip : MonoBehaviour
             UpdateFuel();
 
             PointTowardsVelocity();
+
+            UpdateBreadcrumbsInFlight();
+        }
+
+
+    }
+
+    void UpdateBreadcrumbsInFlight()
+    {
+        if(Time.time - lastBreadcrumbDrop > breadcrumbCooldown)
+        {
+            lastBreadcrumbDrop = Time.time;
+            // drop a breadcrumb
+            GameObject newBreadcrumb = GameObject.Instantiate<GameObject>(breadcrumbsPrefab, transform.position, transform.rotation);
+
+            breadCrumbs.Add(newBreadcrumb);
+
+            // wipe out old breadcrumbs
+            if(breadCrumbs.Count > maxBreadcrumbs)
+            {
+                breadCrumbs.RemoveAt(0);
+            }
         }
     }
 
@@ -148,6 +183,7 @@ public class PlayerShip : MonoBehaviour
         // Place me on the launchpad
         transform.position = Vector3.zero;
         model.SetActive(true);
+        fuelgauge.SetActive(true);
 		GameManager.Instance.ShipLauncher.ResetLauncher();
 
         // refocus camera
@@ -175,6 +211,19 @@ public class PlayerShip : MonoBehaviour
                 em.enabled = i_on;
                 // you don't need to reassign the em module
             }
+        }
+
+        if(thrusterSounds)
+        {
+            if(i_on)
+            {
+                thrusterSounds.Play();
+            }
+            else
+            {
+                thrusterSounds.Stop();
+            }
+            
         }
     }
 
@@ -407,6 +456,7 @@ public class PlayerShip : MonoBehaviour
 
             // hide our model
             model.SetActive(false);
+            fuelgauge.SetActive(false);
             canGo = false;
             body.simulated = false;
 
