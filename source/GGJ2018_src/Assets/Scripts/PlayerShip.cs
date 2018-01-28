@@ -32,6 +32,8 @@ public class PlayerShip : MonoBehaviour
     List<GravityField> gravityFieldsImIn = new List<GravityField>();
     List<RepulseField> repulseFieldsImIn = new List<RepulseField>();
 
+    [Header("Thrusters")]
+    public AudioSource thrusterSounds;
     List<ParticleSystem> thrusterParticles = new List<ParticleSystem>();
     public GameObject thrusterFX;
 
@@ -158,6 +160,19 @@ public class PlayerShip : MonoBehaviour
                 em.enabled = i_on;
                 // you don't need to reassign the em module
             }
+        }
+
+        if(thrusterSounds)
+        {
+            if(i_on)
+            {
+                thrusterSounds.Play();
+            }
+            else
+            {
+                thrusterSounds.Stop();
+            }
+            
         }
     }
 
