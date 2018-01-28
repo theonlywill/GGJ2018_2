@@ -863,7 +863,7 @@ MonoBehaviour:
   delayFieldButton: {fileID: 1758046215623176}
   shieldButton: {fileID: 1516970461531484}
   missileButton: {fileID: 1296816378386090}
-  toggleInvBtn: {fileID: 114504731968344910}
+  toggleInvBtn: {fileID: 114449008076786746}
 --- !u!114 &114625911501525354
 MonoBehaviour:
   m_ObjectHideFlags: 1
