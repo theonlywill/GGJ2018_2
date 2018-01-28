@@ -87,7 +87,7 @@ public class PlayerShip : MonoBehaviour
         {
             lastBreadcrumbDrop = Time.time;
             // drop a breadcrumb
-            GameObject newBreadcrumb = GameObject.Instantiate<GameObject>(breadcrumbsPrefab, transform.position, Quaternion.identity);
+            GameObject newBreadcrumb = GameObject.Instantiate<GameObject>(breadcrumbsPrefab, transform.position, transform.rotation);
 
             breadCrumbs.Add(newBreadcrumb);
 
